@@ -119,3 +119,23 @@ This will start both the backend server (on port 5000) and the React development
     This will start the Node.js server, which will also serve the built React application.
 
     **Note:** Ensure that the `NODE_ENV` environment variable is set to `production` in your production environment.
+
+## API Documentation
+
+### Authentication
+
+-   **`/auth/google` (GET):** Initiates Google OAuth 2.0 authentication.
+-   **`/auth/google/callback` (GET):** Callback URL for Google OAuth 2.0.
+-   **`/api/logout` (GET):** Logs out the current user.
+-   **`/api/current_user` (GET):** Returns the currently logged-in user.
+
+### Billing
+
+-   **`/api/stripe` (POST):** Handles Stripe payments for purchasing email credits. Requires authentication.
+
+### Surveys
+
+-   **`/api/surveys` (GET):** Retrieves all surveys created by the logged-in user. Requires authentication.
+-   **`/api/surveys` (POST):** Creates a new survey. Requires authentication and sufficient email credits.
+-   **`/api/surveys/:surveyId/:choice` (GET):** Records a user's response to a survey (yes/no).
+-   **`/api/surveys/webhooks` (POST)**: Receives and processes webhook events from SendGrid, specifically for tracking user interaction with the survey emails.
